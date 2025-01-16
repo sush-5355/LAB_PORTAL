@@ -1,0 +1,318 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.hero a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.hero a:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Services Section (New) */
+.services {
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+    margin-top: 50px;
+    display: block; /* Ensure it's displayed */
+    border: 1px solid red; /* Temporary border for debugging */
+}
+.services h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Service Cards */
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Remove underline */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+        font-size: 32px;
+        height: 130px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        font-size: 28px;
+        height: 120px;
+    }
+}
+/* Slot Cards */
+/* CSS for slot cards */
+/* General slot card styles */
+.slot-card {
+    background-color: #f8d7da;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: calc(33% - 20px);
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.slot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Differentiate between available and booked slots */
+.slot-card.available {
+    background-color: #e0f7e0; /* Light green for available slots */
+}
+
+.slot-card.booked {
+    background-color: #f8d7da; /* Light red for booked slots */
+}
+
+/* Slot card content */
+.slot-card span {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.slot-card a {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.slot-card a:hover {
+    background-color: #45a049;
+}
+
+.slot-card span.booked {
+    color: #e74c3c;
+}
+
+/* Styling for the "Book Now" button */
+.slot-card a {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Ensuring proper card alignment */
+.slots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Adjust the layout for smaller screens */
+@media (max-width: 768px) {
+    .slot-card {
+        width: calc(50% - 20px); /* Two cards per row on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .slot-card {
+        width: 100%; /* One card per row on small screens */
+    }
+}
+
+
+/* Style for the form */
+form {
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+/* Style for the date picker */
+input[type="date"] {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #4CAF50;
+    background-color: #f4f4f9;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    outline: none;
+}
+
+input[type="date"]:focus {
+    border-color: #45a049;
+    background-color: #ffffff;
+}
+
+input[type="date"]:hover {
+    border-color: #45a049;
+    background-color: #eaf6e0;
+}
+
+/* Adding label styles for better spacing */
+label {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #333;
+    font-weight: bold;
+}
+/* CSS for the "Free Slot" button */
+.free-btn {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.free-btn:hover {
+    background-color: #ec971f;
+}
+
+/* Centering and bolding the heading */
+h2 {
+    text-align: center;
+    margin-top: 5%;
+    font-weight: bold;
+    font-size: 24px; /* Adjust font size as needed */
+    margin-bottom: 20px; /* Add some space below the heading */
+}

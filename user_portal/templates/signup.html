@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container for the signup form */
+        .signup-container {
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 400px;
+            text-align: center;
+        }
+
+        /* Form Header */
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Input Fields */
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Link Styling */
+        .login-link {
+            display: block;
+            margin-top: 20px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Toast Message */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            font-size: 16px;
+            z-index: 9999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .signup-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+
+        <!-- Signup Form -->
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+
+            <input type="text" id="name" name="name" placeholder="Full Name" required><br>
+            <input type="email" id="email" name="email" placeholder="Email Address" required><br>
+            <input type="text" id="phone" name="phone" placeholder="Phone Number" required><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required><br>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <br>
+        <p>Already have an account? <a href="{% url 'login' %}" class="login-link">Login</a></p>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Toast Script to handle notification display -->
+    <script>
+        {% for message in messages %}
+            // Show the toast message
+            var toast = document.getElementById("toast");
+            toast.textContent = "{{ message|escapejs }}";
+            toast.style.display = "block";
+
+            // Hide the toast after 5 seconds
+            setTimeout(function() {
+                toast.style.display = "none";
+            }, 5000);
+        {% endfor %}
+    </script>
+</body>
+</html>

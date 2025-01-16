@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Book a Slot</h2>
+
+<!-- Form to select a date -->
+<form method="POST">
+    {% csrf_token %}
+    <label for="date">Select a Date:</label>
+    <input type="date" id="date" name="selected_date" required>
+    <button type="submit">Check Availability</button>
+</form>
+
+{% if selected_date %}
+    <h3>Available Slots for {{ selected_date }}</h3>
+
+    {% if slots %}
+        <div class="slots">
+            {% for slot in slots %}
+                <div class="slot-card {% if slot.status %} booked {% else %} available {% endif %}">
+                    <span>Slot {{ slot.slot_number }} ({{ slot.start_time }} - {{ slot.end_time }})</span>
+                    {% if not slot.status %}
+                        <a href="{% url 'book_slot' slot.id %}">Book Now</a>
+                    {% else %}
+                        <span>Booked</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No slots available on this date.</p>
+    {% endif %}
+{% endif %}
+
+{% endblock %}

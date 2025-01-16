@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Booked Slots</h2>
+
+{% if booked_slots %}
+    <div class="slots">
+        {% for slot in booked_slots %}
+            <div class="slot-card booked">
+                <span>Slot {{ slot.slot_number }} ({{ slot.start_time }} - {{ slot.end_time }})</span>
+                <span>Booked on: {{ slot.date }}</span>
+                
+                <!-- Free Slot Button -->
+                <form action="{% url 'free_slot' slot.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="free-btn">Free Slot</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>You haven't booked any slots yet.</p>
+{% endif %}
+
+{% endblock %}
