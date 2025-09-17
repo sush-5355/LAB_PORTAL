@@ -6,25 +6,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('user_portal', '0001_initial'),
+        ("user_portal", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='slot',
-            name='date',
+            model_name="slot",
+            name="date",
             field=models.DateField(),
         ),
         migrations.AlterField(
-            model_name='slot',
-            name='slot_number',
+            model_name="slot",
+            name="slot_number",
             field=models.IntegerField(),
         ),
         migrations.AlterField(
-            model_name='slot',
-            name='user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="slot",
+            name="user",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]
