@@ -1,4 +1,8 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.db import models
 from django.utils.timezone import now
 
@@ -33,6 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     Custom User model extending AbstractBaseUser.
     """
+
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=15, unique=True)
@@ -50,14 +55,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email  # String representation for easier debugging
 
 
-
 class Slot(models.Model):
     slot_number = models.IntegerField()
     start_time = models.TimeField()
     end_time = models.TimeField()
     date = models.DateField()
     status = models.BooleanField(default=False)  # False = Available, True = Booked
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)  # Associate with user
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True
+    )  # Associate with user
 
     def __str__(self):
         return f"Slot {self.slot_number} ({self.start_time} - {self.end_time})"
