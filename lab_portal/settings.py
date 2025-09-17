@@ -127,11 +127,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 # URL to access static files
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 # Directory where static files are collected
 STATICFILES_DIRS = [
-    BASE_DIR / "user_portal/static",  # Add the path to the 'static' directory inside your project folder
+    BASE_DIR
+    / "user_portal/static",  # Add the path to the 'static' directory inside your project folder
 ]
 
 
@@ -146,7 +147,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # ]
 
 # settings.py
-LOGIN_URL = '/login/'  # Update this to match the login URL in your project
+LOGIN_URL = "/login/"  # Update this to match the login URL in your project
 
 
 AUTH_USER_MODEL = "user_portal.User"
